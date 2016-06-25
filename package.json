@@ -16,5 +16,15 @@
   "bugs": {
     "url": "https://github.com/TobiahRex/CHhackathon_tobeilot/issues"
   },
-  "homepage": "https://github.com/TobiahRex/CHhackathon_tobeilot#readme"
+  "homepage": "https://github.com/TobiahRex/CHhackathon_tobeilot#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.2",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8"
+  }
 }

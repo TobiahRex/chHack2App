@@ -1,0 +1,22 @@
+{
+  "name": "chHackathon2",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "RexCorpDev <rexcorpfx@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/TobiahRex/CHhackathon_tobeilot",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/vendors/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "socket.io-client": "^1.4.8"
+  }
+}
