@@ -21,8 +21,10 @@ app.use(express.static(path.join(__dirname, 'app')));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cookieParser());
+
 app.use((req, res, next)=> {
-  let handle = (err, dbData) => {
+  res.handle = (err, dbData) => {
+    console.log('err: ', err,'dbData: ', dbData);
     res.status(err ? 400 : 200).send(err || dbData);
   };
   next();

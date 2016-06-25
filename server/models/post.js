@@ -35,4 +35,5 @@ postSchema.statics.addInterval = (intervalObj, cb) => {
 
 
 let Post = mongoose.model('Post', postSchema);
-module.exporst = Post;
+
+module.exports = Post;
