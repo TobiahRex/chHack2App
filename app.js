@@ -1,6 +1,6 @@
 'use strict';
 
-const PORT      = 3000;
+const PORT      = 4000;
 const MONGOURL  = process.env.MONGODB_URI  ||  'mongodb://localhost/chHackathon2'
 
 const express     = require('express');
@@ -31,14 +31,15 @@ app.use((req, res, next)=> {
 app.use('/api', require('./server/routes/api'));
 app.use('/', require('./server/routes/index'));
 
-io.on('connection', (socket){
-  console.log('Client Connected');
+
+io.on('connection', (socket)=>{
+  console.log('Client Connected', socket.handshake.address);
 
 });
 
 mongoose.connect(MONGOURL, err => {
   console.log(err || `MONGO @ ${MONGOURL}`);
-})
-app.listen(PORT, err => {
+});
+server.listen(PORT, err => {
   console.log(err || `Server @ ${PORT}`);
-})
+});
