@@ -5,6 +5,8 @@ const MONGOURL  = process.env.MONGODB_URI  ||  'mongodb://localhost/chHackathon2
 
 const express     = require('express');
 let app           = express();
+const server      = require('http').Server(app);
+const io          = require('socket.io')(server);
 
 const router      = express.Router();
 const path        = require('path');
@@ -13,10 +15,11 @@ const bodyParser  = require('body-parser');
 const mongoose    = require('mongoose');
 const cookieParser= require('cookie-parser');
 
+
 app.use(bodyParser.urlencoded({extended : false}));
+app.use(express.static(path.join(__dirname, 'app')));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'app')));
 app.use(cookieParser());
 app.use((req, res, next)=> {
   let handle = (err, dbData) => {
