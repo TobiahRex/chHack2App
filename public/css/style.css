@@ -1,0 +1,10 @@
+#chartdiv {
+  width: 97vw;
+  height: 400px;
+  background-color: #282828;
+}
+#mapdiv {
+  width: 800px;
+  height: 400px;
+  /*background-color: #282828;*/
+}
