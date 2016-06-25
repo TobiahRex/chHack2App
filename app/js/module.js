@@ -1,16 +1,16 @@
 'use strict';
 
-var app = angular.module('myApp', ['ui.router', 'angular-momentjs', 'angular-uuid']);
+var app = angular.module('myApp', ['ui.router', 'angular-momentjs', 'angular-uuid', 'angular-socket-io']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
     .state('splash', {
-    url:'/welcome', 
+    url:'/welcome',
     controller:'splashCtrl'
-    })  
+    })
     .state('home', {
-      url: '/', 
+      url: '/',
       controller:'mainCtrl'
     })
 

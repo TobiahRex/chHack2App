@@ -7,6 +7,7 @@ const express     = require('express');
 let app           = express();
 const server      = require('http').Server(app);
 const io          = require('socket.io')(server);
+const Socket      = require('./server/sockets/sockets.js');
 
 const router      = express.Router();
 const path        = require('path');
@@ -33,12 +34,12 @@ app.use((req, res, next)=> {
 app.use('/api', require('./server/routes/api'));
 app.use('/', require('./server/routes/index'));
 
-
-io.on('connection', (socket)=>{
+io.on('connection', function(socket){
   console.log('Client Connected', socket.handshake.address);
 
-});
+  Socket.initSocket(io, socket);
 
+});
 mongoose.connect(MONGOURL, err => {
   console.log(err || `MONGO @ ${MONGOURL}`);
 });

@@ -8,11 +8,15 @@ app.module('myApp')
   $timeout(function() {
     $state.go('home');
   }, 3000);
-
 })
 
+.controller('homeController', function($scope, $state, Posts, $moment, uuid, ngSocket){
 
-.controller('homeController', function($scope, $state, Posts, $moment, uuid){
+  let yo = 'yo!';
+  ngSocket.emit('hello', yo);
+
+
+
 
   // defined later
   var refresh;
@@ -25,7 +29,7 @@ app.module('myApp')
     })
     .catch(err => {
       console.log('err:', err);
-    }) 
+    })
 
 
   // GET posts
@@ -35,9 +39,9 @@ app.module('myApp')
     })
     .catch(err => {
       console.log('err:', err);
-    
 
-  // SET message object  
+
+  // SET message object
   let messageIntervalObj = {
     messages  : [],
     count     : messages.length,
@@ -45,7 +49,7 @@ app.module('myApp')
   }
 
 
-  // SET new message object 
+  // SET new message object
   let newMesssage = {
     id      : uuid(),
     messages: $scope.message,
@@ -55,7 +59,7 @@ app.module('myApp')
   }
 
 
-  // SET click object 
+  // SET click object
   let clickIntervalObj = {
     arr: [],
     count: arr.length,
@@ -63,14 +67,14 @@ app.module('myApp')
   }
 
 
-  // SET new click object 
+  // SET new click object
   let newClick = {
     lat: $scope.click.lat,
     long: $scope.click.long
   }
 
 
-  // SET parent object 
+  // SET parent object
   let parentInterval = {
     messagesPerInterval: [],
     messagesCount: messagesPerInterval.length,
@@ -98,10 +102,3 @@ app.module('myApp')
 }, 1000);
 
 })
-
-
-
-
-
-
-

@@ -12,11 +12,14 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "app/vendors/bower_components",
     "test",
     "tests"
   ],
   "dependencies": {
-    "socket.io-client": "^1.4.8"
+    "socket.io-client": "^1.4.8",
+    "angular-momentjs": "^0.2.2",
+    "angular-uuid": "^0.1.0",
+    "angular-socket-io": "^0.7.0",
+    "angular-ui-router": "^0.3.1"
   }
 }
