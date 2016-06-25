@@ -1,6 +1,7 @@
 'use strict';
 
-var app = angular.module('myApp', ['ui.router']);
+var app = angular.module('ourApp', ['ui.router', 'angular-momentjs', 'angular-socket-io']);
+
 
 app.config(function($stateProvider, $urlRouterProvider) {
 

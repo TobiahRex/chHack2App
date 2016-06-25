@@ -3,12 +3,21 @@
   <head>
     <title>Socket.IO chat</title>
 
+    <link rel="stylesheet" href="/vendors/bower_components/boostra-cyborg.css">
+    <!-- <link rel="stylesheet" href="/vendors/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="/style/style.css">
+
     <script src="/vendors/bower_components/angular/angular.js" charset="utf-8"></script>
     <script src="/vendors/bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
+
+    <script src="vendors/bower_components/angular-socket-io/socket.js" charset="utf-8"></script>
+    <script src="vendors/bower_components/socket.io-client/socket.io.js" charset="utf-8"></script>
+    <script src="vendors/bower_components/angular-momentjs/angular-momentjs.js" charset="utf-8"></script>
 
     <script src="/js/module.js"></script>
     <script src="/js/controllers.js"></script>
     <script src="/js/services.js"></script>
+    <script src="/js/factories.js"></script>
 
     <script src="/vendors/bower_components/amcharts3/amcharts/amcharts.js" type="text/javascript"></script>
     <script src="/vendors/bower_components/ammap3/ammap/ammap.js" type="text/javascript"></script>
@@ -33,9 +42,9 @@
   <script>
   var socket = io();
   </script>
-  <body ng-app='myApp'>
+  <body ng-app='ourApp' ng-controller='mainController'>
+    <h1> Salty Caverns </h1>
     <ui-view></ui-view>
-    <h1> Index.html test </h1>
     <ul id="messages"></ul>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
