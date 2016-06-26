@@ -19,15 +19,6 @@ angular.module('ourApp')
 
   var refresh;
 
-  // GET messages
-  // Posts.getMessages()
-  // .then(res => {
-  //   console.log('res:', res);
-  // })
-  // .catch(err => {
-  //   console.log('err:', err);
-  // })
-
   //////////////   This doesnt appear in services fil ////////////////
   // // GET posts
   // Posts.getClicks()
@@ -46,25 +37,35 @@ angular.module('ourApp')
     console.log('err:', err);
   });
 
-  // messageIntervalObj.count = messageIntervalObj.messages.length;
-  $scope.submitMessage = message => {
 
-  }
+  $scope.newEvent = event => {
+    let latitude, longitude;
+    navigator.geolocation.getCurrentPosition((position)=> {
+      latitude  = position.coords.latitude;
+      longitude = position.coords.longitude;
+    });
 
-  // SET message object
-  // SET Lat & Long
-  let latitude, longitude;
-  navigator.geolocation.getCurrentPosition((position)=> {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-  });
-  // SET new message object
-  let newMesssage = {
-    message : $scope.message,
-    lat     : latitude,
-    long    : longitude,
-    date    : moment().format('LTS')
+    if(event.click){
+      let newClick = {
+        lat     : latitude,
+        long    : longitude,
+        date    : moment().format('LTS')
+      }
+      Data.clickIntervalObj.clicks.push(newClick);
+    } else if(event.message){
+      let newMesssage = {
+        message : $scope.message,
+        lat     : latitude,
+        long    : longitude,
+        date    : moment().format('LTS')
+      };
+      Data.messageIntervalObj.messages.push(newMessage);
+    }
   };
+
+
+
+
 
   ///////// These are causing errors because the ng-models don't exist ///////
   //
@@ -86,36 +87,18 @@ angular.module('ourApp')
   // }
   //
   //
-  // // SET click object
-  // let clickIntervalObj = {
-  //   arr    : [],
-  //   count  : arr.length
-  //   //time   : $moment().format('LTS')
-  // }
+  // SE
   //
   //
-  // // SET new click object
-  // let newClick = {
-  //   //id      : uuid(),
-  //   lat     : $scope.click.latitude,
-  //   long    : $scope.click.longitude
-  //   // date    : $moment().format('LTS')
-  // }
+
   //
   // // SET graph array and map array
   // let graphArr =[];
   // let mapArr = [];
   //
   // // SET parent object
-  // let parentInterval = {
-  //   messagesPerInterval: [],
-  //   messagesCount: messagesPerInterval.length,
-  //   clicksPerInterval: [],
-  //   clicksCount: clicksPerInterval.length
-  //   // IntervalTime: $moment().format('LTS')
-  // };
-  //
-  //
+
+
   // // SET data array for map/graph
   // let mapObj = {
   //   title: [],
@@ -229,17 +212,18 @@ angular.module('ourApp')
         "text": ""
       }
     ],
-    "dataProvider": Data.intervalObjs
+    "dataProvider": []
   })
 
 
-  ////// Artificial Pushing of Data
-  // $interval(function() {
-  //   Data.addObj();
-  //   chart.validateData();
-  // }, 2000);
   $interval(() => {
-    Data.addObj();
+
+    Data.getData()
+    .then(data => {
+      console.log('dbData in getData: ', data, '\nline 231');
+      chart.dataProvider = Data.dbData;
+    });
+
     chart.validateData();
   }, 2000);
 
@@ -295,12 +279,10 @@ angular.module('ourApp')
   };
 
   // SET parent object
-
   // PUSH new messages into message object's array
   // messageIntervalObj.messages.push(newMessage);
-
-
   // PUSH new messages into click object's array
+
   clickIntervalObj.clicks.push(newClick);
 
 
@@ -310,5 +292,5 @@ angular.module('ourApp')
     .then(res => {
       $scope.parentInterval = res.data;
     })
-  }, 1000);
+  }, 10000);
 });
