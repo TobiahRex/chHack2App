@@ -1,19 +1,23 @@
 
 body {
-  font-family: cursive;
-  font-family: "Garamond", cursive;
+  font-family: futura;
   background-color: #242424
 }
 /** {
 margin: 0; padding: 0; box-sizing: border-box;
-}*/
+}*/d
 
 body {
   font: 13px Helvetica, Arial;
 }
 
+nav.navbar.navbar-default {
+  opacity: 0.8;
+}
+
 ul.nav.navbar-nav.navbar-right {
-  font-size: 20px;
+  font-size: 16px;
+  /*font-family: "Cambria";*/
 }
 
 span.signature-nav {
@@ -42,6 +46,11 @@ form button {
   padding: 10px;
 }
 
+.btn.btn-success,.btn.btn-danger {
+  color: black;
+  font-weight: bold;
+}
+
 #messages {
   list-style-type: none;
   margin: 0;
@@ -59,9 +68,11 @@ form button {
 .navbar.navbar-brand {
   color: rgb(64, 158, 249);
   margin-bottom: 0;
+  font-size: 30px;
+  font-family: "Brush Script MT";
 }
 
-div.footer > div.container-fluid{
+footer.footer > div.container{
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -71,9 +82,54 @@ div.footer > div.container-fluid{
   height: 40px;
   background-color: #000000;
   color: #efefef;
+  opacity: 0.8;
 }
 
 span.copyright {
   font-size: 15px;
   margin-top: 10px;
+}
+
+.inputArea h4 {
+  font-family: futura;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.inputArea {
+  color: white;
+}
+
+.buttonArea {
+  padding: 10px;
+  float: right;
+}
+
+textarea, .buttonArea > span > button {
+  opacity: 0.8;
+}
+
+textarea.form-control {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+}
+
+.col-xs-6 {
+  border-left-color: white;
+  border-left-color: white;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-right-radius: 3px;
+  border-left-radius: 3px;
+}
+
+.dataArea {
+  height: 450px;
+  width: 100%;
+  padding: 10px;
+}
+
+div > p {
+  font-size: 18px;
 }

@@ -52,17 +52,46 @@
     </div>
   </nav>
 
-  <div class='footer'>
-    <div class="container-fluid">
+<div class="dataArea">
+  INSERT DATA HERE
+  <ui-view>
+    <!-- TEMPLATE VIEWS -->
+  </ui-view>
+</div>
+
+  <div class="container-fluid inputArea">
+    <div class="row">
+      <div class="col-xs-3">
+        <h4 class="text-center">Getting started</h4>
+          <p>
+            Track how many users are clicking and sending messages the same time as you are!
+            Click away. Enjoy!
+          </p>
+      </div>
+      <div class="col-xs-6 text-center">
+        <h4>Message</h4>
+        <textarea class="form-control" rows="3" cols="10" placeholder="Type something here..."></textarea>
+        <div class="buttonArea col-xs-12">
+          <span><button type="button" class="btn btn-default col-xs-2">Cancel</button></span>
+          <span><button type="button" class="btn btn-success col-xs-2 col-xs-offset-8">SUBMIT</button></span>
+        </div>
+      </div>
+      <div class="col-xs-3 text-center">
+        <h4>Or you can just...</h4>
+        <button class="btn btn-lg btn-danger">CLICK</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class='footer'>
+    <div class="container">
       <!-- <p class='copyright col-xs-1'>&copy 2016</p>
       <span class="signature-nav col-xs-10 text-center"> <span class="text-primary">by</span> Tobeillot </span> -->
 
     <span class='copyright text-center col-xs-12'>&copy 2016 &nbsp<span class="text-primary">by</span> Tobeillot</span>
     </div>
-  </div>
+  </footer>
 
-  <ui-view>
-    <!-- TEMPLATE VIEWS -->
-  </ui-view>
+
 </body>
 </html>
