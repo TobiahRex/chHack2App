@@ -1,8 +1,79 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font: 13px Helvetica, Arial; }
-form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-#messages { list-style-type: none; margin: 0; padding: 0; }
-#messages li { padding: 5px 10px; }
-#messages li:nth-child(odd) { background: #eee; }
+
+body {
+  font-family: cursive;
+  font-family: "Garamond", cursive;
+  background-color: #242424
+}
+/** {
+margin: 0; padding: 0; box-sizing: border-box;
+}*/
+
+body {
+  font: 13px Helvetica, Arial;
+}
+
+ul.nav.navbar-nav.navbar-right {
+  font-size: 20px;
+}
+
+span.signature-nav {
+  font-size: 14px;
+}
+
+form {
+  background: #000;
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+form input {
+  border: 0;
+  padding: 10px;
+  width: 90%;
+  margin-right: .5%;
+}
+
+form button {
+  width: 9%;
+  background: rgb(130, 224, 255);
+  border: none;
+  padding: 10px;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#messages li {
+  padding: 5px 10px;
+}
+
+#messages li:nth-child(odd) {
+  background: #eee;
+}
+
+.navbar.navbar-brand {
+  color: rgb(64, 158, 249);
+  margin-bottom: 0;
+}
+
+div.footer > div.container-fluid{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 12px;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #000000;
+  color: #efefef;
+}
+
+span.copyright {
+  font-size: 15px;
+  margin-top: 10px;
+}

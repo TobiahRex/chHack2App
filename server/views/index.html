@@ -1,28 +1,68 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
-    <link rel="stylesheet" href="/style/style.css">
+<head>
+  <title>Socket.IO chat</title>
+  <link rel="stylesheet" type='text/css' href="style/bootswatch-cyborg.min.css">
+  <link rel="stylesheet" type='text/css' href="style/animate.css">
+  <link rel="stylesheet" type='text/css' href="style/style.css">
 
-    <script src="vendors/bower_components/angular/angular.js" charset="utf-8"></script>
-    <script src="vendors/bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
-    <script src="vendors/bower_components/angular-socket-io/socket.js" charset="utf-8"></script>
-    <script src="vendors/bower_components/socket.io-client/socket.io.js" charset="utf-8"></script>
-    <script src="vendors/bower_components/angular-uuid/uuid.js" charset="utf-8"></script>
-    <script src="vendors/bower_components/angular-momentjs/angular-momentjs.js" charset="utf-8"></script>
+  <script src="style/jquery.min.js"></script>
+  <script src="style/bootstrap.min.js"></script>
+  <script src="vendors/bower_components/moment/moment.js"></script>
+  <script src="vendors/bower_components/angular/angular.js" charset="utf-8"></script>
+  <script src="vendors/bower_components/angular-ui-router/release/angular-ui-router.js" charset="utf-8"></script>
+  <script src="vendors/bower_components/angular-socket-io/socket.js" charset="utf-8"></script>
+  <script src="vendors/bower_components/angular-moment/angular-moment.js"></script>
+  <script src="vendors/bower_components/socket.io-client/socket.io.js" charset="utf-8"></script>
+  <script src="vendors/bower_components/angular-momentjs/angular-momentjs.js" charset="utf-8"></script>
 
-    <script src="/js/module.js"></script>
-    <script src="/js/services.js"></script>
-    <script src="/js/factories.js"></script>
-    <script src="/js/controllers.js"></script>
 
-    <script src="/socket.io-client/socket.io.js"></script>
-    <script>io()</script>
-  </head>
-  <body ng-app='ourApp' ng-controller='mainController'>
+  <script src="js/module.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/factories.js"></script>
+  <script src="js/controllers.js"></script>
 
-    <ui-view>
-      <!-- TEMPLATE VIEWS -->
-    </ui-view>
-  </body>
+  <script src="/socket.io-client/socket.io.js"></script>
+  <script>io()</script>
+</head>
+<body ng-app='ourApp' ng-controller='mainController'>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button class="navbar-toggle collapsed" data-toggle='collapse' data-target="#collapse-nav">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <span class="navbar navbar-brand">Salty Cavern</span>
+
+
+
+      </div>
+      <div class="collapse navbar-collapse" id='collapse-nav'>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- if logged in -->
+          <li class="active"><a ui-sref='profile'>History</a></li>
+          <li class="active"><a ui-sref='logout'>Frequency</a></li>
+          <!-- if NOT logged in -->
+          <li class="active"><a ui-sref='login'>Map</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class='footer'>
+    <div class="container-fluid">
+      <!-- <p class='copyright col-xs-1'>&copy 2016</p>
+      <span class="signature-nav col-xs-10 text-center"> <span class="text-primary">by</span> Tobeillot </span> -->
+
+    <span class='copyright text-center col-xs-12'>&copy 2016 &nbsp<span class="text-primary">by</span> Tobeillot</span>
+    </div>
+  </div>
+
+  <ui-view>
+    <!-- TEMPLATE VIEWS -->
+  </ui-view>
+</body>
 </html>
