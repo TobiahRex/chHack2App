@@ -3,7 +3,7 @@
 angular.module('ourApp')
 .factory('ngSocket', function(socketFactory){
 
-  let server = socketFactory();
+  let service = socketFactory();
   service.forward('error');
   return service;
 });
