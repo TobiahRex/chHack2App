@@ -244,42 +244,6 @@ angular.module('ourApp')
   }, 2000);
 
 
-  ///////// MAP ////////////////
-  AmCharts.makeChart( "mapdiv", {
-    "type": "map",
-    "theme": "dark",
-    "imagesSettings": {
-      "balloonText": "[[title]] [[description]]",
-
-    },
-    "areasSettings": {
-      "autoZoom": true,
-      "selectedColor": "#CC0000"
-    },
-    "dataProvider": {
-      "map": "worldLow",
-      "images": [ {
-        //// Test data //////
-        "title": "test",
-        "description": "10:10:10",
-        "latitude": 40.3951,
-        "longitude": -73.5619,
-        "type": "circle",
-        "scale": 0.3,
-        "color": "#fbff2f"
-      },
-      {
-        "title": "test2",
-        "description": "10:10:10",
-        "latitude": 40.3951,
-        "longitude": -73.5719,
-        "type": "circle",
-        "scale": 0.3,
-        "color": "#fbff2f"
-      },
-    ]},
-  });
-
   // SET click object
   let clickIntervalObj = {
     clicks  : [],
@@ -311,4 +275,24 @@ angular.module('ourApp')
       $scope.parentInterval = res.data;
     })
   }, 1000);
-});
+})
+
+.controller('mapController', function() {
+  ///////// MAP ////////////////
+  AmCharts.makeChart( "mapdiv", {
+    "type": "map",
+    "theme": "dark",
+    "imagesSettings": {
+      "balloonText": "[[title]] [[description]]",
+
+    },
+    "areasSettings": {
+      "autoZoom": true,
+      "selectedColor": "#CC0000"
+    },
+    "dataProvider": {
+      "map": "worldLow",
+      "images": []/////// MAP DATA ARRAY GOES HERE!
+    }
+  });
+})

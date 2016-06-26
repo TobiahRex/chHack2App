@@ -18,6 +18,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('map', {
       url         : '/map',
       templateUrl : '/html/map.html',
+      controller  :'mapController'
+    })
+    .state('history', {
+      url         : '/history',
+      templateUrl : '/html/history.html',
       controller  :'homeController'
     })
 
