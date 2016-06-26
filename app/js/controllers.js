@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('ourApp')
-.controller('mainController', function($scope, $state, Posts, $moment, ngSocket){
+.controller('mainController', function($scope, $state, Posts, moment, ngSocket){
   console.log('maintCtrl');
 
 
@@ -12,7 +12,6 @@ angular.module('ourApp')
     $state.go('home');
   }, 3000);
 })
-
 .controller('homeController', function($scope, $state, Posts, Data, $interval, moment, ngSocket){
   console.log('homeCtrl');
   let yo = 'yo!';
@@ -29,7 +28,7 @@ angular.module('ourApp')
   //   console.log('err:', err);
   // })
 
-//////////////   This doesnt appear in services fil ////////////////
+  //////////////   This doesnt appear in services fil ////////////////
   // // GET posts
   // Posts.getClicks()
   // .then(res=> {
@@ -37,7 +36,7 @@ angular.module('ourApp')
   // })
   // .catch(err => {
   //   console.log('err:', err);
-//////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////
 
   Posts.getMessages()
   .then(res => {
@@ -47,7 +46,7 @@ angular.module('ourApp')
     console.log('err:', err);
   });
 
-  messageIntervalObj.count = messageIntervalObj.messages.length;
+  // messageIntervalObj.count = messageIntervalObj.messages.length;
   $scope.submitMessage = message => {
 
   }
@@ -67,7 +66,7 @@ angular.module('ourApp')
     date    : moment().format('LTS')
   };
 
-///////// These are causing errors because the ng-models don't exist ///////
+  ///////// These are causing errors because the ng-models don't exist ///////
   //
   // // SET message object
   // let messageIntervalObj = {
@@ -169,72 +168,69 @@ angular.module('ourApp')
   //   sendInfo();
   // }, 1000);
 
-
-})
-
   let chart = AmCharts.makeChart("chartdiv", {
-      "type": "serial",
-      "balloonDateFormat": "JJ:NN:SS",
-      "categoryField": "time",
-      "columnSpacing3D": 13,
-      "dataDateFormat": "JJ:NN:SS",
-      "sequencedAnimation": false,
-      "theme": "dark",
-      "categoryAxis": {
-        "autoRotateAngle": 72,
-        "autoRotateCount": 0,
-        "minPeriod": "ss",
-        "startOnAxis": true,
-        "axisAlpha": 0.84,
-        "fillAlpha": 0.04,
-        "gridAlpha": 0.28,
-        "offset": 3,
-        "title": "",
-        "titleFontSize": 0
+    "type": "serial",
+    "balloonDateFormat": "JJ:NN:SS",
+    "categoryField": "time",
+    "columnSpacing3D": 13,
+    "dataDateFormat": "JJ:NN:SS",
+    "sequencedAnimation": false,
+    "theme": "dark",
+    "categoryAxis": {
+      "autoRotateAngle": 72,
+      "autoRotateCount": 0,
+      "minPeriod": "ss",
+      "startOnAxis": true,
+      "axisAlpha": 0.84,
+      "fillAlpha": 0.04,
+      "gridAlpha": 0.28,
+      "offset": 3,
+      "title": "",
+      "titleFontSize": 0
+    },
+    "trendLines": [],
+    "graphs": [
+      {
+        "balloonText": "[[title]] of [[category]]:[[value]]",
+        "bullet": "round",
+        "id": "AmGraph-1",
+        "title": "Messages",
+        "type": "smoothedLine",
+        "valueField": "messageCount"
       },
-      "trendLines": [],
-      "graphs": [
-        {
-          "balloonText": "[[title]] of [[category]]:[[value]]",
-          "bullet": "round",
-          "id": "AmGraph-1",
-          "title": "Messages",
-          "type": "smoothedLine",
-          "valueField": "messageCount"
-        },
-        {
-          "balloonText": "[[title]] of [[category]]:[[value]]",
-          "bullet": "square",
-          "id": "AmGraph-2",
-          "title": "Just Clicks",
-          "type": "smoothedLine",
-          "valueField": "clickCount"
-        }
-      ],
-      "guides": [],
-      "valueAxes": [
-        {
-          "id": "ValueAxis-1",
-          "title": "Axis title"
-        }
-      ],
-      "allLabels": [],
-      "balloon": {},
-      "legend": {
-        "enabled": true,
-        "gradientRotation": 0,
-        "labelWidth": 0,
-        "useGraphSettings": true
-      },
-      "titles": [
-        {
-          "id": "Title-1",
-          "size": 15,
-          "text": ""
-        }
-      ],
-      "dataProvider": Data.intervalObjs
-    })
+      {
+        "balloonText": "[[title]] of [[category]]:[[value]]",
+        "bullet": "square",
+        "id": "AmGraph-2",
+        "title": "Just Clicks",
+        "type": "smoothedLine",
+        "valueField": "clickCount"
+      }
+    ],
+    "guides": [],
+    "valueAxes": [
+      {
+        "id": "ValueAxis-1",
+        "title": "Axis title"
+      }
+    ],
+    "allLabels": [],
+    "balloon": {},
+    "legend": {
+      "enabled": true,
+      "gradientRotation": 0,
+      "labelWidth": 0,
+      "useGraphSettings": true
+    },
+    "titles": [
+      {
+        "id": "Title-1",
+        "size": 15,
+        "text": ""
+      }
+    ],
+    "dataProvider": Data.intervalObjs
+  })
 
 
   ////// Artificial Pushing of Data
@@ -283,7 +279,6 @@ angular.module('ourApp')
       },
     ]},
   });
-})
 
   // SET click object
   let clickIntervalObj = {
@@ -302,7 +297,7 @@ angular.module('ourApp')
   // SET parent object
 
   // PUSH new messages into message object's array
-  messageIntervalObj.messages.push(newMessage);
+  // messageIntervalObj.messages.push(newMessage);
 
 
   // PUSH new messages into click object's array
