@@ -27,14 +27,6 @@ app.module('myApp')
       console.log('err:', err);
     }) 
 
-
-  // GET posts
-  Posts.getClicks()
-    .then(res=> {
-      console.log('res:', res);
-    })
-    .catch(err => {
-      console.log('err:', err);
     
 
   // SET message object  
