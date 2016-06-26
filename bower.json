@@ -24,8 +24,12 @@
     "ammap3": "^3.20.8",
     "angular-ui-router": "ui-router#^0.3.1",
     "angular-momentjs": "^0.2.2",
-    "angular-uuid": "^0.1.0",
     "angular-socket-io": "^0.7.0",
-    "angular-ui-router": "^0.3.1"
+    "angular-ui-router": "^0.3.1",
+    "moment": "^2.13.0",
+    "angular-moment": "^0.10.3"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
   }
 }
