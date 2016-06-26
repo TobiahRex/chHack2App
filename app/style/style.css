@@ -5,6 +5,28 @@ body {
   background-color: #282828;
 }
 
+.loadText {
+  padding-bottom: 30px;
+}
+
+.ourImage {
+  height: 200px;
+  width: 200px;
+}
+
+
+.dataArea {
+  background-color: #282828;
+}
+
+.splashContainer, .jumbotron {
+  background-color: #282828;
+}
+
+.col-xs-10.col-xs-offset-1 {
+  background-color: #282828;
+}
+
 #chartdiv {
   width: 100%;
   height: 400px;

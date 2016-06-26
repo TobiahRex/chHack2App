@@ -10,7 +10,7 @@ angular.module('ourApp')
   console.log('splashCtrl');
   $timeout(function() {
     $state.go('home');
-  }, 3000);
+  }, 1100);
 })
 .controller('homeController', function($scope, $state, Posts, Data, $interval, moment, ngSocket){
   console.log('homeCtrl');
