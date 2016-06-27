@@ -14,7 +14,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url         : '/home',
       templateUrl : '/html/home.html',
       controller  :'homeController'
-    });
+    })
+    .state('map', {
+      url         : '/map',
+      templateUrl : '/html/map.html',
+      controller  :'mapController'
+    })
+    .state('history', {
+      url         : '/history',
+      templateUrl : '/html/history.html',
+      controller  :'homeController'
+    })
 
   $urlRouterProvider.otherwise('/');
 });

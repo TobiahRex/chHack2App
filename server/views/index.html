@@ -5,6 +5,7 @@
   <title>Socket.IO chat</title>
   <link rel="stylesheet" type='text/css' href="style/bootswatch-cyborg.min.css">
   <link rel="stylesheet" type='text/css' href="style/animate.css">
+  <link rel="stylesheet" href="/vendors/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" type='text/css' href="style/style.css">
 
   <script src="/vendors/bower_components/amcharts3/amcharts/amcharts.js" type="text/javascript"></script>
@@ -49,16 +50,16 @@
       <div class="collapse navbar-collapse" id='collapse-nav'>
         <ul class="nav navbar-nav navbar-right">
           <!-- if logged in -->
-          <li class="active"><a ui-sref='logout'>Live</a></li>
-          <li class="active"><a ui-sref='profile'>History</a></li>
-          <li class="active"><a ui-sref='login'>Map</a></li>
+          <li class="active"><a ui-sref='home'>Live</a></li>
+          <li class="active"><a ui-sref='history'>History</a></li>
+          <!-- if NOT logged in -->
+          <li class="active"><a ui-sref='map'>Map</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <div class="dataArea">
-    INSERT DATA HERE
     <ui-view>
       <!-- TEMPLATE VIEWS -->
     </ui-view>
@@ -83,7 +84,11 @@
       </div>
       <div class="col-xs-3 text-center">
         <h4>Or you can just...</h4>
-        <button class="btn btn-lg btn-danger">CLICK</button>
+        <!-- <button class="btn btn-lg btn-danger">CLICK</button> -->
+        <div class="switch">
+          <input type="checkbox">
+          <label></label>
+        </div>
       </div>
     </div>
   </div>

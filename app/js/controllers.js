@@ -4,13 +4,12 @@ angular.module('ourApp')
 .controller('mainController', function($scope, $state, Posts, moment, ngSocket){
   console.log('maintCtrl');
 
-
 })
 .controller('splashController', function($scope, $state, Posts, $timeout) {
   console.log('splashCtrl');
   $timeout(function() {
     $state.go('home');
-  }, 3000);
+  }, 1100);
 })
 .controller('homeController', function($scope, $interval, $timeout, $state, Posts, moment, ngSocket){
   console.log('homeCtrl');
@@ -125,8 +124,8 @@ angular.module('ourApp')
     });
   }, 10000);
 
-
-
+})
+.controller('mapController', function() {
   ///////// MAP ////////////////
   AmCharts.makeChart( "mapdiv", {
     "type": "map",
@@ -141,28 +140,7 @@ angular.module('ourApp')
     },
     "dataProvider": {
       "map": "worldLow",
-      "images": [ {
-        //// Test data //////
-        "title": "test",
-        "description": "10:10:10",
-        "latitude": 40.3951,
-        "longitude": -73.5619,
-        "type": "circle",
-        "scale": 0.3,
-        "color": "#fbff2f"
-      },
-      {
-        "title": "test2",
-        "description": "10:10:10",
-        "latitude": 40.3951,
-        "longitude": -73.5719,
-        "type": "circle",
-        "scale": 0.3,
-        "color": "#fbff2f"
-      },
-    ]},
+      "images": []/////// MAP DATA ARRAY GOES HERE!
+    }
   });
-
-
-
 });
