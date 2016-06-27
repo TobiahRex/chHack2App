@@ -75,12 +75,12 @@
       <div class="col-xs-3">
         <h4 class="text-center">Getting started</h4>
         <p>
-          Track how many users are clicking and sending messages the same time as you are!
+          Track how many users are clicking and sending messages at the same time as you!
           Click away. Enjoy!
         </p>
       </div>
       <div class="col-xs-6 text-center">
-        <h4>Message</h4>
+        <h4> Add a Message...</h4>
         <textarea ng-model='message' class="form-control" rows="3" cols="10" placeholder="Type something here..."></textarea>
         <div class="buttonArea col-xs-12">
           <span><button ng-click='cancelMessage()' type="button" class="btn btn-default col-xs-2">Cancel</button></span>
@@ -90,8 +90,8 @@
       <div class="col-xs-3 text-center">
         <h4>Or you can just...</h4>
         <!-- <button class="btn btn-lg btn-danger">CLICK</button> -->
-        <div class="switch">
-          <input type="checkbox" ng-click='submitClick()'>
+        <div class="switch" ng-click='activateButton($event)'>
+          <input type="checkbox" ng-model='switchButton' ng-click='submitClick()'>
           <label></label>
         </div>
         <br>
