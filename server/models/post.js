@@ -3,32 +3,39 @@
 const mongoose = require('mongoose');
 
 let postSchema = new mongoose.Schema({
-  data :    []
+  parentInterval :  {
+    time    :     {
+      type    :   String
+    },
+    messagesPerInterval   :  [],
+    clicksPerInterval     :  [],
+    messageCount          :   {
+      type    :    Number
+    },
+    clickCount            :   {
+      type    :    Number
+    }
+  }
 });
 
-//   data : [
-//     {
-//       messagesPerInterveral : [{lat, long, body, time},{},{}],
-//       messagesCount         :   Number,
-//       clicksPerInterval     :   [{lat, long, time},{}],
-//       clicksCount           :   Number,
-//       IntervalTime          :   String,
-//
-//     }
-// ]
-
-postSchema.statics.createDatabase = cb => {
-  Post.create((err, database)=> {
-    err ? cb(err) : cb(null, {SUCCESS: `Database Created`, DATA : database});
-  });
-};
 
 postSchema.statics.addInterval = (intervalObj, cb) => {
-  Post.find({}, (err, dbData)=> {
-    if(err) cb(err);
-    dbData.push(intervalObj);
-    dbData.save((err, savedData)=> {
-      err ? cb(err) : cb(null, savedData);
+
+  let newIntervalObj = new Post({
+    parentInterval :  {
+      time                  :  intervalObj.time,
+      messagesPerInterval   :  intervalObj.messagesPerInterval,
+      clicksPerInterval     :  intervalObj.clicksPerInterval,
+      messageCount          :  intervalObj.messageCount,
+      clickCount            :  intervalObj.clickCount
+    }
+  });
+  console.log('new data Model: ', newIntervalObj);
+
+  newIntervalObj.save(err => {
+    if(err) return cb(err);
+    Post.find({}, (err, updatedData)=>{
+      err ? cb(err) : cb(null, updatedData);
     });
   });
 };

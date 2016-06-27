@@ -12,31 +12,20 @@ angular.module('ourApp')
     $state.go('home');
   }, 3000);
 })
-.controller('homeController', function($scope, $state, Posts, Data, $interval, moment, ngSocket){
+.controller('homeController', function($scope, $state, Posts, moment, ngSocket){
   console.log('homeCtrl');
   let yo = 'yo!';
   ngSocket.emit('hello', yo);
 
   var refresh;
 
-  //////////////   This doesnt appear in services fil ////////////////
-  // // GET posts
-  // Posts.getClicks()
-  // .then(res=> {
-  //   console.log('res:', res);
-  // })
-  // .catch(err => {
-  //   console.log('err:', err);
-  //////////////////////////////////////////////////////
-
-  Posts.getMessages()
+  Posts.firstRender()
   .then(res => {
-    console.log('res:', res);
+    console.log('render data: ', res.data);
   })
   .catch(err => {
-    console.log('err:', err);
+    console.log('render err: ', err);
   });
-
 
   $scope.newEvent = event => {
     let latitude, longitude;
@@ -51,7 +40,7 @@ angular.module('ourApp')
         long    : longitude,
         date    : moment().format('LTS')
       }
-      Data.clickIntervalObj.clicks.push(newClick);
+      Posts.clickIntervalObj.clicks.push(newClick);
     } else if(event.message){
       let newMesssage = {
         message : $scope.message,
@@ -59,97 +48,9 @@ angular.module('ourApp')
         long    : longitude,
         date    : moment().format('LTS')
       };
-      Data.messageIntervalObj.messages.push(newMessage);
+      Posts.messageIntervalObj.messages.push(newMessage);
     }
   };
-
-
-
-
-
-  ///////// These are causing errors because the ng-models don't exist ///////
-  //
-  // // SET message object
-  // let messageIntervalObj = {
-  //   messages  : [],
-  //   count     : messages.length
-  //   //  time      : $moment().format('LTS')
-  // }
-  //
-  //
-  // // SET new message object
-  // let newMesssage = {
-  //   //  id      : uuid(),
-  //   messages: $scope.message,
-  //   lat     : $scope.message.latitude,
-  //   long    : $scope.message.longitude
-  //   //date    : $moment().format('LTS')
-  // }
-  //
-  //
-  // SE
-  //
-  //
-
-  //
-  // // SET graph array and map array
-  // let graphArr =[];
-  // let mapArr = [];
-  //
-  // // SET parent object
-
-
-  // // SET data array for map/graph
-  // let mapObj = {
-  //   title: [],
-  //   latitude: $scope.message.latitude || $scope.click.latitude,
-  //   longtidue: $scope.message.longtidue || $scope.click.longtidue,
-  //   type: "circle",
-  //   description: newMessage.date || newClick.date,
-  //   scale: 0.3,
-  //   color: $6c00ff
-  // }
-  //
-  //
-  // let finalObj = {
-  //   data: parentInterval,
-  //   graph: mapObj
-  // }
-  //
-  //
-  //
-  // // pushing each into arrays
-  // graphArr.push(parentInterval);
-  // mapArr.push(mapObj);
-  //
-  //
-  // // PUSH new messages into message object's array
-  // messageIntervalObj.arr.push(newMessage);
-  //
-  //
-  // // PUSH new messages into click object's array
-  // clickIntervalObj.arr.push(newClick);
-  //
-  // function sendInfo() {
-  //   Posts.updatePosts(finalObj)
-  //   .then(res => {
-  //
-  //     let arr = {
-  //       data: res.parentData,
-  //       graph: res.mapData
-  //     };
-  //
-  //     return arr;
-  //   })
-  //   .catch(err => {
-  //     console.log('err:', err);
-  //   })
-  // }
-  //
-  // //   post every 1 second
-  // refresh = $interval(function(finalObj) {
-  //   sendInfo();
-  // }, 1000);
 
   let chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
@@ -213,19 +114,9 @@ angular.module('ourApp')
       }
     ],
     "dataProvider": []
-  })
+  });
+  chart.dataProvider = Posts.dbData;
 
-
-  $interval(() => {
-
-    Data.getData()
-    .then(data => {
-      console.log('dbData in getData: ', data, '\nline 231');
-      chart.dataProvider = Data.dbData;
-    });
-
-    chart.validateData();
-  }, 2000);
 
 
   ///////// MAP ////////////////
@@ -264,33 +155,6 @@ angular.module('ourApp')
     ]},
   });
 
-  // SET click object
-  let clickIntervalObj = {
-    clicks  : [],
-    time    : moment().format('LTS')
-  };
-  clickIntervalObj.count = clickIntervalObj.clicks.length;
 
 
-  // SET new click object
-  let newClick = {
-    lat   : latitude,
-    long  : longitude
-  };
-
-  // SET parent object
-  // PUSH new messages into message object's array
-  // messageIntervalObj.messages.push(newMessage);
-  // PUSH new messages into click object's array
-
-  clickIntervalObj.clicks.push(newClick);
-
-
-  // post every 1 second
-  refresh = $interval(function() {
-    Posts.updatePosts(parentInterval)
-    .then(res => {
-      $scope.parentInterval = res.data;
-    })
-  }, 10000);
 });
