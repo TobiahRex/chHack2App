@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js",
-    "postinstall" : "bower i"
+    "start": "node app.js",
+    "postinstall": "bower i"
   },
   "repository": {
     "type": "git",
@@ -28,10 +28,11 @@
     "mongoose": "^4.5.2",
     "morgan": "^1.7.0",
     "path": "^0.12.7",
+    "serve-favicon": "^2.3.0",
     "socket.io": "^1.4.8",
     "socket.io-client": "^1.4.8"
   },
-  "engines" : {
-    "node" : "6.2.1"
+  "engines": {
+    "node": "6.2.1"
   }
 }
