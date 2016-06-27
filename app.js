@@ -1,6 +1,6 @@
 'use strict';
 
-const PORT      = 4000;
+const PORT      = process.env.PORT || 4000;
 const MONGOURL  = process.env.MONGODB_URI  ||  'mongodb://localhost/chHackathon2'
 
 const express     = require('express');
