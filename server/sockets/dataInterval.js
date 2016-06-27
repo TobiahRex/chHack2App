@@ -50,7 +50,7 @@ let ioData = {
         messages = [];
         err ? socket.emit('dbData', err) : socket.emit('dbData', newData);
       });
-    }, 2000);
+    }, 10000);
 
   }
 };
