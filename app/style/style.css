@@ -92,11 +92,16 @@ form button {
   background: #eee;
 }
 
+@font-face {
+  font-family: "Star Trek Future";
+  src : url('./star_jedi/starjedi/Starjhol.ttf');
+}
+
 .navbar.navbar-brand {
   color: rgb(170, 185, 247);
   margin-bottom: 0;
   font-size: 30px;
-  font-family: "Brush Script MT";
+  font-family: "Star Trek Future";
 }
 
 footer.footer > div.container{
