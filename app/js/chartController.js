@@ -31,7 +31,7 @@ angular.module('ourApp')
         "balloonText": "[[title]] of [[category]]:[[value]]",
         "bullet": "round",
         "id": "AmGraph-1",
-        "title": "Messages",
+        "title": "Message Count",
         "type": "smoothedLine",
         "valueField": "messageCount"
       },
@@ -39,7 +39,7 @@ angular.module('ourApp')
         "balloonText": "[[title]] of [[category]]:[[value]]",
         "bullet": "square",
         "id": "AmGraph-2",
-        "title": "Just Clicks",
+        "title": "Clicks",
         "type": "smoothedLine",
         "valueField": "clickCount"
       }
@@ -48,7 +48,7 @@ angular.module('ourApp')
     "valueAxes": [
       {
         "id": "ValueAxis-1",
-        "title": "Coding House Happy Clicks"
+        "title": "Awesomeness"
       }
     ],
     "allLabels": [],
@@ -87,12 +87,14 @@ angular.module('ourApp')
         let newObj = {
           "time" : '',
           "messageCount" : 0,
-          "clickCount" : 0
+          "clickCount" : 0,
+          "messageBody": ''
         };
 
         newObj["time"] = eachObj.parentInterval.time;
         newObj["messageCount"] = eachObj.parentInterval.messageCount;
         newObj["clickCount"] = eachObj.parentInterval.clickCount;
+        newObj["messageBody"] = eachObj.parentInterval.messagesPerInterval;
         return newObj
       })
       chart.dataProvider = obj.slice(obj.length-100);
