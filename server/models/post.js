@@ -18,29 +18,26 @@ let postSchema = new mongoose.Schema({
   }
 });
 
+postSchema.statics.updateData = (newDataObj, cb) => {
 
-postSchema.statics.addInterval = (intervalObj, cb) => {
-
-  let newIntervalObj = new Post({
-    parentInterval :  {
-      time                  :  intervalObj.time,
-      messagesPerInterval   :  intervalObj.messagesPerInterval,
-      clicksPerInterval     :  intervalObj.clicksPerInterval,
-      messageCount          :  intervalObj.messageCount,
-      clickCount            :  intervalObj.clickCount
+  let dataObj = new Post({
+    "parentInterval" :  {
+      "time"                  :  newDataObj.time,
+      "messagesPerInterval"   :  newDataObj.messagesPerInterval,
+      "clicksPerInterval"     :  newDataObj.clicksPerInterval,
+      "messageCount"          :  newDataObj.messageCount,
+      "clickCount"            :  newDataObj.clickCount
     }
   });
-  console.log('new data Model: ', newIntervalObj);
 
-  newIntervalObj.save(err => {
-    if(err) return cb(err);
+  dataObj.save(err =>{
+    err ? cb(err) :
     Post.find({}, (err, updatedData)=>{
+      console.log('updatedData: \n\n', updatedData);
       err ? cb(err) : cb(null, updatedData);
     });
   });
 };
 
-
 let Post = mongoose.model('Post', postSchema);
-
 module.exports = Post;

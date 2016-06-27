@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('ourApp')
-.controller('chartController', function($interval, Posts) {
+.controller('chartController', function($interval, $timeout, Posts, ngSocket) {
+
+  let data = [];
 
   let chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
@@ -46,7 +48,7 @@ angular.module('ourApp')
     "valueAxes": [
       {
         "id": "ValueAxis-1",
-        "title": "Axis title"
+        "title": "Coding House Happy Clicks"
       }
     ],
     "allLabels": [],
@@ -67,12 +69,37 @@ angular.module('ourApp')
     "dataProvider": []
   });
 
-  $interval(() => {
-    Posts.doInterval()
-    .then((data) => {
-      console.log('postdata: ', data);
-      chart.dataProvider = data;
+  //   $interval(() => {
+  //     Posts.doInterval()
+  //     .then((data) => {
+  //       chart.dataProvider = data;
+  //       chart.validateData();
+  //     });
+  //   }, 6000);
+  // });
+
+    ngSocket.on('dbData', (dbData)=> {
+
+      let intervalObjs = [];
+      //
+
+      let obj = dbData.map((eachObj) => {
+        let newObj = {
+          "time" : '',
+          "messageCount" : 0,
+          "clickCount" : 0
+        };
+
+        newObj["time"] = eachObj.parentInterval.time;
+        newObj["messageCount"] = eachObj.parentInterval.messageCount;
+        newObj["clickCount"] = eachObj.parentInterval.clickCount;
+        return newObj
+      })
+      chart.dataProvider = obj.slice(obj.length-100);
+
+
+      // console.log('chart.dataProvider: ', chart.graphs[1].valueField);
       chart.validateData();
     });
-  }, 10000);
+
 });

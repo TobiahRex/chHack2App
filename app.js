@@ -8,6 +8,7 @@ let app           = express();
 const server      = require('http').Server(app);
 const io          = require('socket.io')(server);
 const Socket      = require('./server/sockets/sockets.js');
+const Interval    = require('./server/sockets/dataInterval.js');
 
 const router      = express.Router();
 const path        = require('path');
@@ -25,7 +26,6 @@ app.use(cookieParser());
 
 app.use((req, res, next)=> {
   res.handle = (err, dbData) => {
-    console.log('err: ', err,'dbData: ', dbData);
     res.status(err ? 400 : 200).send(err || dbData);
   };
   next();
@@ -37,7 +37,9 @@ app.use('/', require('./server/routes/index'));
 io.on('connection', function(socket){
   console.log('Client Connected', socket.handshake.address);
 
-  Socket.initSocket(io, socket);
+  // Socket.initSocket(io, socket);
+
+  Interval.saveData(io, socket);
 
 });
 mongoose.connect(MONGOURL, err => {
