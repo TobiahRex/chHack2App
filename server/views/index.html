@@ -29,7 +29,12 @@
   <script src="js/module.js"></script>
   <script src="js/services.js"></script>
   <script src="js/factories.js"></script>
-  <script src="js/controllers.js"></script>
+
+  <script src="js/homeController.js"></script>
+  <script src="js/mapController.js"></script>
+  <script src="js/mainController.js"></script>
+  <script src="js/chartController.js"></script>
+  <script src="js/splashController.js"></script>
 
   <script src="/socket.io-client/socket.io.js"></script>
   <script>io()</script>
@@ -44,7 +49,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <span class="navbar navbar-brand">Salty Cavern</span>
+        <span class="navbar navbar-brand" ui-sref='splash'>Salty Cavern</span>
 
       </div>
       <div class="collapse navbar-collapse" id='collapse-nav'>
@@ -76,19 +81,22 @@
       </div>
       <div class="col-xs-6 text-center">
         <h4>Message</h4>
-        <textarea class="form-control" rows="3" cols="10" placeholder="Type something here..."></textarea>
+        <textarea ng-model='message' class="form-control" rows="3" cols="10" placeholder="Type something here..."></textarea>
         <div class="buttonArea col-xs-12">
-          <span><button type="button" class="btn btn-default col-xs-2">Cancel</button></span>
-          <span><button type="button" class="btn btn-success col-xs-2 col-xs-offset-8">SUBMIT</button></span>
+          <span><button ng-click='cancelMessage()' type="button" class="btn btn-default col-xs-2">Cancel</button></span>
+          <span><button ng-click='submitMessage(message)' type="button" class="btn btn-success col-xs-2 col-xs-offset-8">SUBMIT</button></span>
         </div>
       </div>
       <div class="col-xs-3 text-center">
         <h4>Or you can just...</h4>
         <!-- <button class="btn btn-lg btn-danger">CLICK</button> -->
         <div class="switch">
-          <input type="checkbox">
+          <input type="checkbox" ng-click='submitClick()'>
           <label></label>
         </div>
+        <br>
+        <br>
+        <h4>... and do a thing.</h4>
       </div>
     </div>
   </div>
