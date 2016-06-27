@@ -12,7 +12,7 @@ angular.module('ourApp')
     $state.go('home');
   }, 3000);
 })
-.controller('homeController', function($scope, $state, Posts, moment, ngSocket){
+.controller('homeController', function($scope, $interval, $timeout, $state, Posts, moment, ngSocket){
   console.log('homeCtrl');
   let yo = 'yo!';
   ngSocket.emit('hello', yo);
@@ -115,7 +115,15 @@ angular.module('ourApp')
     ],
     "dataProvider": []
   });
-  chart.dataProvider = Posts.dbData;
+
+  $interval(() => {
+    Posts.doInterval()
+    .then((data) => {
+      console.log('postdata: ', data);
+      chart.dataProvider = data;
+      chart.validateData();
+    });
+  }, 10000);
 
 
 
